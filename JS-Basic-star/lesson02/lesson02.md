@@ -41,7 +41,14 @@
 
 - 对象数据类型：*object,array,function
 
-**3、javascript脚本执行顺序** 
+- **内存中一共分为几种对象：**
+
+    - 变量
+    - DOM对象
+    - 常量
+    - 自定义对象
+
+**3、javascript脚本执行顺序**
 
 - 定义 var function
 - 执行 其他所有
