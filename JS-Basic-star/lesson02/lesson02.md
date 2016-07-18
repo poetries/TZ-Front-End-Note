@@ -66,7 +66,7 @@
 
   - **转换函数**
 
-    - toString() 转换为字符串，在JavaScript中所有数据类型都可以转换为string类型
+   - toString() 转换为字符串，在JavaScript中所有数据类型都可以转换为string类型
 
     ```javascript
         var n1 = 12;
@@ -129,13 +129,13 @@
     ```
  - `String(value)`- 把给定的值转换成字符串
 
-```javascript
-    String(123); //"123"
-    String([1,2]); //"1,2"
-    String(undefined) //"undefined"
-    String(null) //"null"
-    String({}) //"[object Object]"
-```
+    ```javascript
+        String(123); //"123"
+        String([1,2]); //"1,2"
+        String(undefined) //"undefined"
+        String(null) //"null"
+        String({}) //"[object Object]"
+    ```
 
 - **隐式转换**
 
