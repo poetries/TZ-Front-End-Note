@@ -66,7 +66,7 @@
 
   - **转换函数**
 
-   - toString() 转换为字符串，在JavaScript中所有数据类型都可以转换为string类型
+   - `toString()` 转换为字符串，在JavaScript中所有数据类型都可以转换为string类型
 
     ```javascript
         var n1 = 12;
