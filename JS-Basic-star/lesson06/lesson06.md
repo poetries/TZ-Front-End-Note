@@ -109,4 +109,4 @@ alert(c);//30
 ![](../images/DOM4.png)
 ![](../images/DOM5.png)
 ![](../images/DOM6.png)
-![](../images/bibao .png)
+![](../images/bibao.png)
