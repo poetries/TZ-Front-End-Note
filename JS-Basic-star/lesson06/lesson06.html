@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lesson06</title>
+</head>
+<body>
+
+
+</body>
+<script type="text/javascript">
+
+//输出空心菱形
+
+var line = parseInt(prompt("输入菱形的上半部行数")||0);
+for (var i = 1,c = line-1; i <=line; i++,c--) {//i控制行数 c用来控制每一行输入的空格数
+	for(var j = 1;j<=c;j++){
+		document.write('&nbsp;');
+	}
+	for(var j = 1;j<=i*2-1;j++){
+		document.write('* ');
+	}
+	document.write('<br >');
+}
+
+for (var i = line-1,c = 1; i >=1; i--,c++) {
+	for(var j = 1;j<=c;j++){
+		document.write('&nbsp;');
+	}
+	for(var j = 1;j<=i*2-1;j++){
+		document.write('* ');
+	}
+	document.write('<br >');
+}
+
+</script>
+</html>
