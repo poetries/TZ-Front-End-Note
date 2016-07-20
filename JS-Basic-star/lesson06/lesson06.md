@@ -51,6 +51,24 @@
     + 函数执行完 里面的东西全部销毁
 
 ```javascript
+//alert(x);//9:执行弹出x,结果x没定义,错误.
+alert(i);//9:执行弹出i,然而i之前已经定义,只不过没地址,因此是undefiend
+var i = 10;//1:var i;    10:把常量池中10的地址赋给栈中的i
+var j = "你好";//2:var j;   11:把常量池中 你好 的地址复给栈中的j
+var k = z = null;//3:var k,z;  12:把堆中null的地址赋值给z和k
+var m = function(){//4:var m;   5:function匿名函数  13:把匿名函数在堆中的地址赋给栈中的m
+    alert(2);
+}
+var b = document.body;//6:var b;    14:把堆中document.body对象的地址赋给栈中的b
+var f = true;//7:var f; 15:把常量池中true的地址赋给栈中的变量f
+function m(){//8:function m;
+    alert(1);
+}
+
+```
+
+
+```javascript
 function m(){
     c = 50;//在局部变量中找不到定义的c 沿着作用域链找到了全局变量的c
     alert('哈哈哈');
