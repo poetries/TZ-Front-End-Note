@@ -67,5 +67,58 @@
 
 ---
 
+```javascript
+//多个对象的构造 以及 多个对象之间如何建立联系
+function Student(name,age,sex){
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+
+}
+
+function Bingqilin(name){
+    this.name = name;
+}
+
+function Game(name){
+    this.name = name;
+}
+function Hour(time){
+    this.time = time;
+}
+Student.prototype = {
+
+    eat:function(b){
+        alert(this.name+"喜欢吃"+b.name);
+    },
+    mess:function(){
+        alert(this.name+"的信息："+this.age+','+this.sex);
+    },
+    sleep:function(h){
+        alert(this.name+"每天睡,"+h.time+'小时');
+    },
+    work:function(h){
+        alert(this.name+"每天工作,"+h.time+'小时');
+    },
+    like:function(g){
+        alert(this.name+"喜欢打,"+g.name);
+    }
+
+}
+var s = new Student("小明",22,"男");
+
+var b = new Bingqilin("黑色的冰淇淋");
+s.eat(b);//小明喜欢吃黑色的冰淇淋
+
+var g = new Game("英雄联盟");
+s.like(g);//把对象的地址发送给like的参数即可访问构造函数Game的name属性
+
+var h = new Hour(10);
+s.sleep(h);
+s.work(h);
+```
+
+---
+
 ![](../images/DOM8.png)
 ![](../images/DOM9.png)
