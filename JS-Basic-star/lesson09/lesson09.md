@@ -26,7 +26,13 @@
 ---
 
 ![](../images/DOM12.png)
+
+---
+
 ![](../images/DOM10.png)
+
+---
+
 ![](../images/DOM11.png)
 
 ---

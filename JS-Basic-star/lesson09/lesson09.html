@@ -6,6 +6,9 @@
 </head>
 <body>
 
+</body>
+<script type="text/javascript">
+
 //小头爸爸牵着大头儿子的手去吃饭，吃完饭之后，
 //小头爸爸背着大头儿子回家，回家后儿子学习，老爸工作，工作学习完后
 //儿子看动画片
@@ -16,7 +19,7 @@
 //创建对象以及他们之间的关联
 
  function Person(name,age){
- 
+
 	this.name = name;
 	this.age = age;
  }
@@ -40,7 +43,7 @@ Person.prototype = {//这样子写 抛弃了默认生成的那块空的内存对
 		alert(this.name+"在吃"+rice.name);
 	},
 	//需求 18岁以上才能背人
-	/* //写法一 不推荐 这个满足18岁的功能是自己强加的 不是客户需求的 
+	/* //写法一 不推荐 这个满足18岁的功能是自己强加的 不是客户需求的
 	carry:function(person){//这里设计不合理 让老爸有这个功能 儿子没有这个功能
 		if(this.age>=18){
 		alert(this.name+'背着'+person.name);
@@ -55,7 +58,7 @@ Person.prototype = {//这样子写 抛弃了默认生成的那块空的内存对
 		alert(this.name+"正在学习");
 	},
 	watchTV:function(jm){
-	
+
 		alert(this.name+"正在看"+jm+'...');
 	}
 };
@@ -67,7 +70,7 @@ var p2 = new Person("儿子",15);
 //p1.eat(new Rice("蛋炒饭"));
 //p2.eat(new Rice("猪脚饭"));
 
-//p1.carry(p2);//老爸背儿子	
+//p1.carry(p2);//老爸背儿子
 //p2.carry(p1);//让儿子背老爸 输出结果：儿子,还未满18岁，背不起
 //p1.backhome();
 
@@ -89,13 +92,13 @@ p1.carry(p2);
 //功能函数
 Object.prototype.extends = function(func,actions){//让所有的子孙 构造器都有这个功能
 	for(var prop in func.prototype){//传进一个func构造器 迭代构造器中的功能 把构造器中的功能全都映射过来 复制一份
-		this.prototype[prop] = func.prototype[prop];//迭代原型中的所有的功能到 当前里面去	
+		this.prototype[prop] = func.prototype[prop];//迭代原型中的所有的功能到 当前里面去
 
 	}
 	for(var prop in actions){
 		this.prototype[prop] = actions[prop];
 	}
-	
+
 };
 
 function Father(name){
@@ -166,5 +169,5 @@ p2.watchTV('蜡笔小新');
 var p3 = new Mother('围裙妈妈');
 p3.scoop(p2);
 
-</body>
+</script>
 </html>
