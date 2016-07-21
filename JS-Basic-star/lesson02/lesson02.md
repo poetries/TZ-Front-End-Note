@@ -26,29 +26,22 @@
 
 **2、数据类型**
 
-- 查看数据类型用：`typeof 变量名`
-
-- number:数字
-- string:字符类型，必须用引号引起来
-- boolean:布尔类型  true false
-- null:变量引用了一块堆中一个空的空间
-
-- object:引用对象类型（存在于堆里面）
-- array:数组类型
-- function:函数数据类型
-- 对象数据类型：*object,array,function
+查看数据类型用：`typeof 变量名`
 
 **Javascript的数据类型有六种（ES6新增了第七种Symbol）**
 
 - 数值（number）：整数和小数（比如1和3.14）
 - 字符串（string）：字符组成的文本（比如"Hello World"）
 - 布尔值（boolean）：true（真）和false（假）两个特定值
-- undefined：表示“未定义”或不存在，即此处目前没有任何值
+- undefined：表示 未定义 或不存在，即此处目前没有任何值
 - - null：表示空缺，即此处应该有一个值，但目前为空
 - 对象（object）：各种值组成的集合
 
 通常，我们将数值、字符串、布尔值称为原始类型（primitive type）的值，即它们是最基本的数据类型，不能再细分了。而将对象称为合成类型（complex type）的值，因为一个对象往往是多个原始类型的值的合成，可以看作是一个存放各种值的容器。至于undefined和null，一般将它们看成两个特殊值
 
+
+
+---
 
 在editplus里面，蓝色标明的是关键字;
 
@@ -185,3 +178,33 @@
 - 函数定义在内存中的变化
 
     - 画图（常量池）
+
+
+---
+
+## 总结一下`==`运算的规则：(隐式转换)
+
+- JS中的值有两种类型：原始类型(`Primitive`)、对象类型(`Object`)。
+
+- 原始类型包括：`Undefined`、`Null`、`Boolean`、`Number`和`String`等五种。
+
+- `Undefined`类型和`Null`类型的都只有一个值，即`undefined`和`null`；`Boolean`类型有两个值：`true`和`false`；`Number`类型的值有很多很多；String类型的值理论上有无数个。
+
+- 所有对象都有`valueOf()`和`toString()`方法，它们继承自Object，当然也可能被子类重写
+
+---
+
+- `undefined == null`，结果是`true`。且它俩与所有其他值比较的结果都是`false`。
+
+- `String == Boolean`，需要两个操作数同时转为`Number`。
+
+- `String/Boolean == Number`，需要`String/Boolean`转为`Number`。
+
+- `Object == Primitive`，需要`Object`转为`Primitive`(具体通过`valueOf`和`toString`方法)
+
+---
+
+![](https://pic2.zhimg.com/19f0997f259fcf4545d17ed568227c81_b.png)
+
+
+
