@@ -10,6 +10,9 @@
 - `func.call（obj）`：调用func的时候，以`obj`这个对象的作用域去调用
 - 改变函数在调用的时候里面闭包的作用域
 
+- `call(obj,arg1,arg2,arg3)`;`call`第一个参数传对象，可以是`null`。参数以逗号分开进行传值，参数可以是任何类型。
+`apply(obj,[arg1,arg2,arg3])`;`apply`第一个参数传对象，参数可以是数组或者`arguments `对象
+
 ---
 
 **知识点：**

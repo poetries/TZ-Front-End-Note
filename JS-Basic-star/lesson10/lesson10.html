@@ -41,7 +41,7 @@
 		});
 
 		function ComptPlayer(name){
-			Player.call(this,name);
+			Player.call(this,name);//Person.call(this,name,age) 的 意思就是使用 Person构造函数（也是函数）在this对象下执行 那么 ComptPlayer就有了Person的所有属性和方法
 		}
 
 		ComptPlayer.extends(Player,{
@@ -49,7 +49,7 @@
 				this.point = parseInt(Math.random()*100)%3+1;
 			}
 		});
-		
+
 		function GuessSystem(player1,player2){
 			this.p1 = player1;
 			this.p2 = player2;

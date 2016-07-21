@@ -29,3 +29,26 @@
   - 给字符串原型添加功能isNumber
   - 给字符串原型添加功能isCardId
   - 给字符串原型添加功能is...
+
+---
+
+- 简单的封装对象
+
+```javascript
+String.prototype.isEmail = function(){
+
+  email = this;
+  if (email.indexOf("@")!=-1&&email.indexOf(".")!=-1)
+  {
+    if(email.indexOf("@")<email.lastIndexOf("@")){
+      alert("邮箱不合法");
+    }else{
+      alert("邮箱合法");
+    }
+  }
+
+}
+var email = "jingguanliuye@gmail.com";
+email.isEmail();
+```
+
