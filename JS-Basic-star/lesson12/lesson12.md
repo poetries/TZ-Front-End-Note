@@ -52,3 +52,44 @@ var email = "jingguanliuye@gmail.com";
 email.isEmail();
 ```
 
+---
+
+```javascript
+//===============================日历练习(方法简洁 高效)======================================
+
+
+
+//var year = parseInt(prompt("请输入日历年份："));
+//var month = parseInt(prompt("请输入日历月份："))-1;
+
+Date.prototype.printCalendar = function(){
+
+var year = this.getFullYear(),month = this.getMonth();
+var date = new Date(year,month,1);
+
+//alert(date.toLocaleString());
+document.write("<div class='date'>"+year+"年"+(month+1)+"月</div>");
+document.write("日 一 二 三 四 五 六<br />");
+
+
+var day = date.getDay();
+for(var i=0;i<day;i++){
+  document.write('  ');
+}
+
+var count = new Date(year,month+1,0).getDate();
+for(var i=1;i<=count;i++){
+  document.write(i+'  ');
+  if((i+day)%7==0){
+    document.write('<br/>');
+  }
+}
+
+
+}
+new Date(2012,2).printCalendar();
+```
+
+---
+
+![](..images/DOM16.png)
