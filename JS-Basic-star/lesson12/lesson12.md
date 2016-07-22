@@ -77,7 +77,7 @@ for(var i=0;i<day;i++){
   document.write('  ');
 }
 
-var count = new Date(year,month+1,0).getDate();
+var count = new Date(year,month+1,0).getDate();//这里的0返回一个月的最后一天
 for(var i=1;i<=count;i++){
   document.write(i+'  ');
   if((i+day)%7==0){
