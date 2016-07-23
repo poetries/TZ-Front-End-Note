@@ -17,6 +17,18 @@
 
 **新知识：**
 
+- `window` 是`Window`构造器造出来的一个对象 `alert(window instanceof Window)`
+- `document` 是`Document`构造器造出来的一个对象
+
+- 任何对象在我们的内存中他都是由某个构造器创建出来的 也就是说 有构造器一定有对应的原型prototype
+- 例如：div是由HTMLDivElement 这个构造器创建的一个实例 `div = new HTMLDivElement()`  `span = new HTMLSpanElement()`
+
+-查看某个对象对应的构造器：console.log();
+
+
+- 整个浏览器的实现就是一个面向对象的编程思想 一切皆是对象
+---
+
 - 1.BOM 浏览器对象模型
 
        - a.`screen` 指的不是浏览器的宽度，指的是整个电脑屏幕的分辨率
@@ -65,3 +77,8 @@
 
             + `setAttribute/getAttribute`
             + `appendChild`
+
+---
+
+![](../images/DOM17.png)
+![](http://img0.imgtn.bdimg.com/it/u=705279271,1953368879&fm=21&gp=0.jpg)
