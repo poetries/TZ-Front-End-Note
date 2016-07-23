@@ -26,9 +26,10 @@
             可以通过`userAgent`判断当前浏览器信息
 
        - c.`location`
-            `URL`：统一资源定位符 `Union Resource Location`
 
-                - 可以通过`href`属性重定向（改变）页面的URL，进行页面跳转
+           - `URL`：统一资源定位符 `Union Resource Location`
+
+           - 可以通过`href`属性重定向（改变）页面的URL，进行页面跳转
 
        - d.`history`
             go方法能够让我们进行历史回退或者前进
@@ -44,21 +45,23 @@
        - **`document`**
 
          + **功能**
-            + getElementById   $('#aaa')
-            + getElementByTagName  $('div')
-            + getElementsByClass  $('.aaa')
+            + `getElementById`   `$('#aaa')`
+            + `getElementByTagName`  `$('div')`
+            + `getElementsByClass`  `$('.aaa')`
 
        - **`document` `object`**
 
          - **属性：**
 
-            + className，style
-            + id
-            + name,value(表单元素)
-            + href,src...(对应的元素)
-            + innerHTML
-            + children
-            + parentNode
-            + 功能方法：
-            + setAttribute/getAttribute
-            + appendChild
+            + `className`，`style`
+            + `id`
+            + `name`,`value`(表单元素)
+            + `href`,`src`...(对应的元素)
+            + `innerHTML`
+            + `children`
+            + `parentNode`
+
+         + **功能方法：**
+
+            + `setAttribute/getAttribute`
+            + `appendChild`
