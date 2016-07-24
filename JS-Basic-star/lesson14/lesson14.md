@@ -59,7 +59,8 @@
          + **功能**
             + `getElementById`   `$('#aaa')`
             + `getElementByTagName`  `$('div')`
-            + `getElementsByClass`  `$('.aaa')`
+            + `getElementsByClassName`  `$('.aaa')`
+            + `getElementsByName`  只用在表单元素中
 
        - **`document` `object`**
 
