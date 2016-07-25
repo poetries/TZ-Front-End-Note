@@ -71,8 +71,9 @@
            + IE浏览器第一个对象就不会传入`event`事件源对象（`event = event||window.event`;）
 
            + 非IE浏览器的事件源属性是`target`属性（`event.target = event.target||event.srcElement`;）
-           + IE浏览器的事件源属性是srcElement属性
+           + IE浏6览器的事件源属性是srcElement属性
 
 
 - 3.事件冒泡机制
 - 4.案例
+
