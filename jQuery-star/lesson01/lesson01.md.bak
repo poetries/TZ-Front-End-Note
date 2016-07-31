@@ -1,5 +1,7 @@
 **开班典礼：**
 
+---
+
 **新知识点：**
 
 **1.程序流程详解**
@@ -45,12 +47,13 @@
 - e.原生dom对象和jquery代理对象的相互转换 
     
 **例如**：
+
 ```javascript
-	$(传入的原生对象);
-	//原生对象转化成jQuery对象
-	var nav = document.getElementById("nav");
-	var $nav = $(nav);
-	alert($nav.get(0) == nav);//true
+$(传入的原生对象);
+//原生对象转化成jQuery对象
+var nav = document.getElementById("nav");
+var $nav = $(nav);
+alert($nav.get(0) == nav);//true
 ```
 
 **5.检索范围的限制**（`$('字符串',element)`）
@@ -61,7 +64,7 @@
 
 ---
 
-- **三种写法对比**：
+- **总结：三种写法对比**：
 
 - **方式一：不推荐 搜索速度最慢**
  - `$("#nav").css();`
