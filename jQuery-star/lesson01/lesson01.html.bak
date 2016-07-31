@@ -78,7 +78,7 @@
 		var $nav = $(nav);
 		//alert($nav.get(0) == nav);//true
 
-		$nav.children().css('backgroundColor','red');
+		$nav.child().css('backgroundColor','red');
 
 
 	</script>
