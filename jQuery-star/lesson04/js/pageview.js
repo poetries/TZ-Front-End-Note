@@ -1,7 +1,14 @@
-(function($){
-	$.fn.pageView = function(ops){//fnjQuery的原型 pageView 方法 也就是插件的名字
+/*
+*@Author:poetries
+*@Description:插件的功能：实现鼠标滚动翻页 
+*
+*/
+
+(function($){//传入回调函数
+	$.fn.pageView = function(callback){//fnjQuery的原型 pageView 方法 也就是插件的名字
 		//alert(ops);
-		this.ops = ops ||{};//this指代当前被代理的jQuery对象
+		//this.ops = ops ||{};//this指代当前被代理的jQuery对象
+		this.callback = callback;
 		init.call(this );//初始化函数的作用就是初始化HTML结构
 		listener.call(this);//绑定滚轮事件  实现翻页
 	}
@@ -10,7 +17,9 @@
 		
 		this.index = 0;//当前索引为0
 		this.addClass("ui-pageview");
-		this.children("div").addClass("ui-page");
+		this.children("div").addClass("ui-page").each(function(){
+			$(this).attr('def',$(this).get(0).className)
+		});
 		this.$maxIndex = $("div.ui-page",this).size()-1;
 	}
 	function listener(){
@@ -32,11 +41,17 @@
 					
 				}
 				if(!$this.is(":animated")){//状态判断
-					$this.animate({"top":"-"+$index+"00%"},1000);
+					$this.animate({"top":"-"+$index+"00%"},1000,function(){
+						//if($this.callback){
+							//$this.callback();
+						//}
+						$this.callback&&$this.callback($index,$this.children("div").eq($index));//简洁
+					});
 					$this.index = $index;
 				}
 				
 
 			}); 
+			$this.callback&&$this.callback(0,$this.children("div").eq(0));
 	}
 })(jQuery);

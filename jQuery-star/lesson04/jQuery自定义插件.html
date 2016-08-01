@@ -16,19 +16,60 @@
 				height:100%;
 				overflow:hidden;
 			}
+			#view div.m3{
+				background-image:linear-gradient(-90deg,rgb(254,254,254),rgb(148,159,175));
+				
+			}
+			/*css动画*/
+			#view div.m3anim img.left,#view div.m3anim img.right{
+			animation: float 2s linear infinite;
+			}
+			@keyframes float{
+				0%{top:-20px}
+				30%{top:-10px}
+				50%{top:0px}
+				70%{top:-10px}
+				100%{top:-20px}
+			}
 
-
+			#view div.m3 img.text{
+				position:absolute;
+				top:50%;
+				left:50%;
+				margin-left:-107px;
+				margin-top:-90px;
+			}
+			#view div.m3 img.left{
+				position:absolute;
+				top:-20px;
+				left:15%;
+			}
+			#view div.m3 img.right{
+				position:absolute;
+				top:-20px;
+				right:20%;
+			}
+			#view div.m4anim{
+				font-size:100px;
+				transition:all 2s;
+			}
 		</style>
 	</head>
 	<body>
 		<div id='view'>
-			<div style="background:red">
+			<div class="m3">
+				<img class="right" src="../images/M3-right.png"  width="239" height="336">
+				
+				<img class="left" src="../images/M3-left.png" width="261" height="430">
+				<img class="text" src="../images/M3-texting.png" width="214" height="181">
 			</div>
-			<div style="background:yellow">
+				
+			<div class="m4">
+				文字变大
 			</div>
-			<div style="background:blue">
+			<div>
 			</div>
-			<div style="background:green">
+			<div>
 			</div>
 		</div>
 	</body>
@@ -72,8 +113,36 @@
 			*/
 
 			//---------------封装插件实现
+			//回掉函数 执行完动画 立即执行回调函数
+			function callback(curr,$page){
+				//alert(index);
+				console.log($page.css("background"));
 
-			$("#view").pageView("afdaf");
+				$page.siblings().each(function(){
+					
+					$(this).removeClass().addClass(this.getAttribute("def"));
+				});
+				switch (curr)
+				{
+					case 0:/**
+						$page.find("img.left").animate({"top":"0px"},1000,function(){
+							$page.find("img.right").animate({"top":"0px"},1000);
+						});**/
+						$page.addClass("m3anim");
+						break;
+
+					case 1:
+						//$page.animate({"font-size":"50px"},2000);
+						$page.addClass("m4anim");
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+				
+				}
+			}
+			$("#view").pageView(callback);
 
 
 		});
