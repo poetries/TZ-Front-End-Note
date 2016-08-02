@@ -22,7 +22,7 @@
 	</head>
 	<body>
 		<input type="button" value="按钮">
-		<p id ='op' style="color:red"></p>
+		<p id ='op'></p>
 	</body>
 	<script>
 
@@ -32,13 +32,13 @@
 	btn.onclick = function(){
 
 		setInterval(function(){//每隔2秒自动刷新后台数据
-				ajax(method,url,asyn,function(ret){//回调函数 请求成功处理数据
+				ajax(get,"teacher.php",true,function(xtr){//回调函数 请求成功处理数据
 				
-				var res = eval(ret);
+				var rps = eval( xtr );
 				var pHTML = '';
-				for (var i=0;i<res.length ;i++ )
+				for (var i=0;i<rps.length;i++)
 				{
-					pHTML += "姓名"+res[i].name+"年龄"+res[i].age;
+					pHTML += "姓名："+ rps[i].name +"；年龄："+ rps[i].age +"；<br />"
 				}
 				oP.innerHTML = pHTML;
 
@@ -68,8 +68,7 @@
 		//处理请求
 		xhr.onreadystatechange = function(){
 			
-			if (xhr.readyState == 4)
-				
+			if (xhr.readyState == 4){
 				if (xhr.status == 200)//200是HTTP 请求成功的状态码
 				{
 					success && success(xhr.responseText);//函数存在 并执行加载完成执行的函数
