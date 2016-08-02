@@ -52,6 +52,18 @@
 			.pic p a:hover{
 				color:#ff00cc;
 			}
+			#btn{
+				width:100px;
+				height:40px;
+				background:#999;
+				color:#fff;
+				font-size:14px;
+				font-family:"Microsoft Yahei";
+				margin:20px auto;
+				display:block;
+				text-align:center;
+				cursor:pointer;
+			}
 
 		</style>
 	</head>
@@ -69,30 +81,38 @@
 				<div style="clear:both"></div>
 			</ul>
 		</div>
+		<input type="button" id="btn" value="加载更多">
 	</body>
 	<script src="ajax.js"></script>
 	<script>
 		window.onload= function(){
 			var oWrap = document.getElementById("wrap");
 			var oLi = document.getElementsByTagName("li");//返回的是数组[]
+			var oBtn = document.getElementById("btn");
+			var Num = 0;
+			load(Num);
+			oBtn.onclick = function(){
+				Num +=8;
+				load(Num);
+			}
 
-				ajax({
-				url: "data.php",
-				success: function(data){
-					//document.write(data);
+			function load(Num){
+					ajax({
+					url: "data.php",
+					success: function(data){
+						//document.write(data);
 
-					var data = eval("("+data+")");//responseText是一个字符串 eval是把这个字符串转换成js中的对象
-					var html = "";
-					for (var i=0;i<data.length ;i++ )
-					{
-						html = '<div class="pic"><img src="'+data[i].src+'"><p><a href="#">'+data[i].title+'</a></p></div>';
-						oLi[getShortLiIndex()].innerHTML +=html;
+						var data = eval("("+data+")");//responseText是一个字符串 eval是把这个字符串转换成js中的对象
+						var html = "";
+						for (var i=Num;i<Num+8 ;i++ )
+						{
+							html = '<div class="pic"><img src="'+data[i].src+'"><p><a href="#">'+data[i].title+'</a></p></div>';
+							oLi[getShortLiIndex()].innerHTML +=html;
+						}
+						
 					}
-					//document.getElementsByClassName("test")[0].innerHTML = html;
-					
-					
-				}
-			});
+				});
+			}
 			
 			
 
@@ -100,7 +120,7 @@
 				
 				var index = 0;
 				var iH = oLi[index].offsetHeight;
-				for (var i=1;i<oLi.lenght ;i++ )
+				for (var i=1;i<oLi.length ;i++ )
 				{
 					if(oLi[i].offsetHeight<iH){
 						index = i;
@@ -109,6 +129,7 @@
 				}
 				return index;
 			}
+			
 
 		}
 	</script>
