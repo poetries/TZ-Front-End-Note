@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>Document</title>
+		
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+				background:#000;
+			}
+			#box{
+				width:300px;
+				height:500px;
+				border:10px  solid #fff;
+				margin:50px auto;
+				position:relative;
+				overflow:hidden;
+			}
+			#box div.title{
+				color:#fff;
+				font-size:24px;
+				font-family:"Microsoft Yahei";
+				text-align:center;
+				padding-top:100px;
+			}
+			#box .diff p{
+				line-height:30px;
+				width:200px;
+				color:#000;
+				font-size:16px;
+				font-family:"Microsoft Yahei";
+				text-align:center;
+				background:#fff;
+				margin:70px auto;
+				cursor:pointer;
+
+
+			}
+			#box .diff p.on{
+				background-color:#f6c;
+				color:#fff;
+			}
+			#box .plane{
+				position:absolute;
+				width:60px;
+				height:36px;
+			}
+			#box .plane{ width:60px; height:36px; position:absolute;}
+			#box .bullet{ width:6px; height:22px; position:absolute;}
+			#box .enemy{ width:23px; height:30px; position:absolute;}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script src="../js/jquery-2.1.4.js"></script>
+	<script>
+	$(function(){
+		game.init();
+	});
+			
+	var game = {
+		box:$("#box"),
+		init:function(){
+			var $title = $("<div>");
+			$title.addClass("title");
+			$title.html("打飞机 v1.0版本");
+			this.box.append($title);
+			
+			var $diff = $("<div>");
+			$diff.addClass("diff");
+			$diff.append("<p>简单</p><p>一般</p><p>困难</p>");
+			this.box.append($diff);
+			
+			$("#box .diff p").hover(function(){
+				$(this).addClass("on");
+			},function(){
+				$(this).removeClass("on");
+			}).click(function(e){
+				//alert(11);
+				var index = $(this).index();
+
+				var e = e || event;
+				var eX = e.clientX; //当前鼠标距离浏览器的宽度
+				var eY = e.clientY;//当前鼠标距离浏览器的高度
+				var ev = {x:eX,y:eY};
+				//alert(eX+":"+eY);
+
+				game.start(ev);
+			});
+
+		},
+		start:function(ev){
+			game.box.empty();
+			game.plane(ev);
+
+		},
+		plane:function(ev){
+			var $plane = $('<img src="img/plane.png" />');
+			$plane.addClass("plane");
+			game.box.append($plane);
+			
+			var cssTop = game.box.offset().top +10 + $('img.plane').height()/2;
+			var cssLeft = game.box.offset().left +10 + $('img.plane').width()/2;
+			
+			var topMax = game.box.height() - $plane.height();
+			var leftMin = -$plane.width()/2;
+			var leftMax = game.box.width() - $plane.width()/2;
+
+			$plane.css({
+				//当前飞机的垂直位置=当前鼠标距离浏览器的高度-盒子box距离浏览器顶部的距离-border-top - 飞机的height/2
+				top: ev.y - cssTop  + 'px', 
+				//当前飞机的水平位置=当前鼠标距离浏览器的宽度-盒子box距离浏览器左侧的距离-border-left - 飞机的width/2
+				left: ev.x - cssLeft +'px'
+			});
+
+			//飞机跟着鼠标移动
+			$(document).mousemove(function(e){
+
+				var top = e.clientY- cssTop;
+				var left = e.clientX - cssLeft;
+				
+				if (top<0)
+				{
+					top = 0;
+				}else if(top> topMax){
+					top = topMax;
+				}
+				if (left < leftMin)
+				{
+					left = leftMin;
+				}else if(left > leftMax){
+					left = leftMax;
+				}
+				  $plane.css({
+				  top: top + 'px',
+				  left: left +'px'
+				});
+			});
+
+			//给plane加一个bTime属性 而这样的话 下面关定时器出现作用域问题 var Time = setInterval()
+			game.plane.bTime = setInterval(function(){
+			game.bullet();
+			},300); // 子弹速度
+
+			game.plane.eTime = setInterval(function(){
+				game.enemy();
+			},1000);//敌军生成速度
+
+		},
+
+		bullet : function(){
+		var $bullet = $('<img class="bullet" src="img/bullet.png">');
+		game.box.append($bullet);
+		$bullet.css({
+			top : $('img.plane').position().top - $('img.bullet').height() + 'px' ,
+			left : $('img.plane').position().left + $('img.plane').width()/2 - $('img.bullet').width()/2 + 'px' ,
+		}).animate({
+			top : - $('img.bullet').height() + 'px',
+		},$('img.plane').position().top/0.2,'linear',function(){
+			$(this).remove();
+		});
+	},
+
+		enemy : function(){
+			var $enemy = $("<img class='enemy' src='img/enemy.png' />")
+			game.box.append($enemy);
+			$enemy.css({
+				top : -$('img.enemy').height(),
+				left : Math.random()*(game.box.width()-$('img.enemy').width())
+			}).animate({
+				top : game.box.height()
+			},5000,'linear',function(){
+				$(this).remove();
+			}); // 敌军移速
+		},
+
+};
+
+
+	</script>
+</html>
