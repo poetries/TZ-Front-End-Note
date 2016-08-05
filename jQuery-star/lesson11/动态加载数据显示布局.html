@@ -276,6 +276,8 @@
 			{
 				this.checked = false;
 			}
+			$('span.index').text($inps.filter(":checked").size());
+
 			
 			
 		});
@@ -286,7 +288,7 @@
 			$inps.parents("li").each(function(){//迭代选中的对象
 				//console.log($(this).index());
 				menuJson[$(this).index()].checked = $('input',this).is(":checked");
-				$("span.index").
+			
 			});
 			
 			refreshMenuList();
