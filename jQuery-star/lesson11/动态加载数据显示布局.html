@@ -129,8 +129,39 @@
 				padding:10px;
 				overflow:auto;
 				margin-bottom:10px;
+				
 
 			}
+			div.mask div.select_dialog div.menu_list ul{
+				width:100%;
+			}
+			div.mask div.select_dialog div.menu_list ul li{
+				width:16.6%;
+				height:110px;
+				float:left;
+				list-style:none;
+				position:relative;
+			}
+			div.mask div.select_dialog div.menu_list ul li input{
+				position:absolute;
+				left:0px;
+				top:87px;
+			}
+			div.mask div.select_dialog div.menu_list ul li i{
+				width:65px;
+				height:65px;
+				display:block;
+				margin:10px auto;
+			}
+			div.mask div.select_dialog div.menu_list ul li input:checked + i{
+				background-position:0px -65px;
+			}
+			div.mask div.select_dialog div.menu_list ul li p{
+				font-size:14px;
+				display:inline;
+			}
+
+
 			div.mask div.select_dialog .btn{
 				width:200px;
 				height:30px;
@@ -158,7 +189,9 @@
 				<p class="text">您已设置0/6个常用功能</p>
 				<div class="selected">已选中功能</div>
 				<div class="menu_list">
-					
+					<ul>
+						
+					</ul>	
 				</div>
 				<button class="btn">保存</button>
 			</div>
@@ -189,6 +222,7 @@
 					{id : "20",src : "icon_65_zdcx.png",text : "账单查询",checked : false}
 					];
 			var $menuList = $("div.menu_func ul.menu_list");
+			var $menu = $("div.mask div.select_dialog div.menu_list ul");
 			for(var i=0;i<menuJson.length;i++){
 			if(menuJson[i].checked){
 				$menuList.append(
@@ -199,6 +233,15 @@
 						"</a>"+
 					"</li>");
 			}
+			$menu.append(
+			"<li>"+
+			"<a href=\"#\">"+
+					"<input type=\"checkbox\" "+(menuJson[i].checked?"checked":"")+" id=\""+menuJson[i].id+"\">"+
+					"<i style=\"background-image:url('img/"+menuJson[i].src+"');\"></i>"+
+					"<p><label for=\""+menuJson[i].id+"\">"+menuJson[i].text+"</label></p>"+
+			"</a>"+
+		"</li>");
+
 		}
 		var $mask = $("div.mask");
 
@@ -209,6 +252,9 @@
 		$("div.select_dialog a.close",$mask).click(function(){
 			$mask.fadeOut(1000);
 		});
+		
 
+
+		
 	</script>
 </html>
