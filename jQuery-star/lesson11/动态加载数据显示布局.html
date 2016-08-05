@@ -76,7 +76,7 @@
 				left:0px;
 				right:0px;
 				bottom:0px;
-				/**display:none;**/
+				display:none;
 			}
 			div.mask div.select_dialog{
 				width:700px;
@@ -95,6 +95,7 @@
 				line-height:40px;
 				text-indent:10px;
 				background-color:#0066b3;
+				text-align:left;
 			}
 			div.mask div.select_dialog p.text{
 				text-align:right;
@@ -119,12 +120,13 @@
 				background-color:#ddd;
 				text-indent:10px;
 				margin:auto;
+				text-align:left;
 			}
 			div.mask div.select_dialog div.menu_list{
 				width:660px;
 				margin:auto;
 				background-color:#ddd;
-				margin-top:10px;
+				margin-top:4px;
 				height:320px;
 				padding:10px;
 				overflow:auto;
@@ -160,6 +162,9 @@
 				font-size:14px;
 				display:inline;
 			}
+			div.mask div.select_dialog  p.text span.index{
+				color:#cc0000;
+			}
 
 
 			div.mask div.select_dialog .btn{
@@ -186,7 +191,7 @@
 			<div class="select_dialog">
 				<p class="title">请选择定制功能</p>
 				<a class= "close" href="#"></a>
-				<p class="text">您已设置0/6个常用功能</p>
+				<p class="text">您已设置<span class="index">0</span>/6个常用功能</p>
 				<div class="selected">已选中功能</div>
 				<div class="menu_list">
 					<ul>
@@ -223,35 +228,70 @@
 					];
 			var $menuList = $("div.menu_func ul.menu_list");
 			var $menu = $("div.mask div.select_dialog div.menu_list ul");
+			
+			function refreshMenuList(){
+				$menuList.empty();
+				for(var i=0;i<menuJson.length;i++){
+					if(menuJson[i].checked){
+						$menuList.append(
+							"<li>"+
+								"<a href=\"#\">"+
+								"	<i style=\"background-image:url('img/"+menuJson[i].src+"');\"></i>"+
+								"	<p>"+menuJson[i].text+"</p>"+
+								"</a>"+
+							"</li>");
+					}
+				}
+				
+			}
+			refreshMenuList();
 			for(var i=0;i<menuJson.length;i++){
-			if(menuJson[i].checked){
-				$menuList.append(
+					$menu.append(
 					"<li>"+
-						"<a href=\"#\">"+
-						"	<i style=\"background-image:url('img/"+menuJson[i].src+"');\"></i>"+
-						"	<p>"+menuJson[i].text+"</p>"+
+					"<a href=\"#\">"+
+							"<input type=\"checkbox\" "+(menuJson[i].checked?"checked":"")+" id=\""+menuJson[i].id+"\">"+
+							"<i style=\"background-image:url('img/"+menuJson[i].src+"');\"></i>"+
+							"<p><label for=\""+menuJson[i].id+"\">"+menuJson[i].text+"</label></p>"+
 						"</a>"+
 					"</li>");
-			}
-			$menu.append(
-			"<li>"+
-			"<a href=\"#\">"+
-					"<input type=\"checkbox\" "+(menuJson[i].checked?"checked":"")+" id=\""+menuJson[i].id+"\">"+
-					"<i style=\"background-image:url('img/"+menuJson[i].src+"');\"></i>"+
-					"<p><label for=\""+menuJson[i].id+"\">"+menuJson[i].text+"</label></p>"+
-			"</a>"+
-		"</li>");
-
-		}
+				}
+			
+			
 		var $mask = $("div.mask");
 
 		$("div.menu_func span").click(function(){
-			$mask.fadeIn(1000);
+			$mask.fadeIn(200);
 		});
 		
 		$("div.select_dialog a.close",$mask).click(function(){
-			$mask.fadeOut(1000);
+			$mask.fadeOut(200);
+			
 		});
+		
+		var $inps = $('div.mask div.select_dialog div.menu_list ul li input');
+		$inps.change(function(){
+			//alert($inps.filter(":checked").size());
+			var checked = $inps.filter(":checked").size();
+			if (this.checked && checked == 7)
+			{
+				this.checked = false;
+			}
+			
+			
+		});
+
+		//点击保存
+
+		$('div.mask div.select_dialog .btn').click(function(){
+			$inps.parents("li").each(function(){//迭代选中的对象
+				//console.log($(this).index());
+				menuJson[$(this).index()].checked = $('input',this).is(":checked");
+			});
+			
+			refreshMenuList();
+			$mask.fadeOut(200);
+		});
+		
 		
 
 
