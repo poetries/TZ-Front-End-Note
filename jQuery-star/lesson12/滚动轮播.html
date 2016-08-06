@@ -6,53 +6,39 @@
 		<meta name="Description" content="">
 		<title>页面滚动轮播</title>
 		<script src="../js/jquery-2.1.4.js"></script>
-		<style>
-			*{
-				margin:0;
-				padding:0;
-			}
-			html,body{
-				width:100%;
-				height:100%;
-			}
-			div.pagebar{
-				width:710px;
-				height:130px;
-				border:1px  solid red;
-				position:relative;
-				overflow:hidden;
-				margin:30px auto;
-			}
-			div.pagebar ul.content{
-				width:1000%;
-				height:100%;
-				background-color:#abcef;
-			}
-			div.pagebar ul.content li{
-				height:100%;
-				text-align:center;
-				float:left;
-				list-style-type:none;
-			}
-		</style>
+		<link rel="stylesheet" href="css/index.css">
 	</head>
 	<body>
-		<div class="pagebar" page-size="3">
+		<div class="pagebar" page-size="3" mode="item" page-loop="true|false">
 			<ul class="content">
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
-				<li>6</li>
-				<li>7</li> 
+				<li>
+					<div class="card">1</div>
+				</li>
+				<li>
+					<div class="card">2</div>
+				</li>
+				<li>
+					<div class="card">3</div>
+				</li>
+				<li>
+					<div class="card">4</div>
+				</li>
+				<li>
+					<div class="card">5</div>
+				</li>
+				<li>
+					<div class="card">6</div>
+				</li>
+				<li>
+					<div class="card">7</div>
+				</li>
 			</ul>
-			<a href="#" class="prev bar"></a>
-			<a href="#" class="next bar"></a>
+			
 		</div>
 	</body>
-	<sxript src="js/pagebar.js"></sxript>
+	<!-- <script src="js/pagebar.js"></script> -->
+	<script src="js/实现无缝滚动.js"></script>
 	<script>
-		$("div.pagevar").pagebar();
+		$("div.pagebar").pagebar();
 	</script>
 </html>
