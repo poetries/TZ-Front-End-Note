@@ -4,11 +4,18 @@
 		<meta charset="UTF-8">
 		<title>css3立体转换</title>
 		<style type="text/css">
-			div{
+			.box1{
 				width: 100px;
 				height: 100px;
 				background: red;
-				transform: rotateX(55deg);
+				transform: rotateX(45deg);
+				margin-bottom:20px;
+			}
+			.box2{
+				width: 100px;
+				height: 100px;
+				background: red;
+				transform: rotateY(47deg);
 			}
 		</style>
 	</head>
@@ -20,6 +27,7 @@
 			rotateY() 方法，元素围绕其 Y 轴以给定的度数进行旋转。
 
 		-->
-		<div>3D 转换方法 rotateY() rotateX()</div>
+		<div class="box1">rotateX()翻转45度</div>
+		<div class="box2">rotateY()翻转47度</div>
 	</body>
 </html>
